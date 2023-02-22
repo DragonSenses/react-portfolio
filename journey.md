@@ -44,7 +44,9 @@ cd react-portfolio
 code .
 ```
 
-# 4. Delete some boilerplate files and code that won't be needed for our application
+# 4. Get an empty React project. 
+
+Delete some files and code that won't be needed for our application
 
 Go to the `src` folder and delete these files:
 
@@ -329,7 +331,7 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <div>Header</div>
+    <header>Header</header>
   )
 }
 ```
@@ -344,10 +346,122 @@ function App() {
       Ken <i class="fa-solid fa-dragon"></i>
       <Header />
       <section></section>
-      ...
+      /* more sections ... */
     </div>
   );
 }
 
 export default App;
 ```
+
+### Now I want the Header to have a darker background. 
+
+- So I have to match the alternating sections by altering this line: `section:nth-child(2n)` to `section:nth-child(2n+1)`.
+
+- Then create under components folder a `header.module.css` file, which will contain styles specific only to `Header.js`.
+
+- Import styles to Header component:
+
+```js
+import styles from './header.module.css'
+```
+
+- Apply styles to Header component:
+
+```jsx
+<header className={styles.header}>
+  Header
+</header>
+```
+
+- Then add styles (similar to what I did for sections) to `header.module.css`
+
+```css
+.header {
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
+```
+
+Now go to the App and remove the sample line 
+
+`Ken <i class="fa-solid fa-dragon"></i>`
+
+and apply root stylings to the main App (which means to add `className='App'` to the div)
+
+```js
+function App() {
+  return (
+    <div className="App">
+      <Header />
+      <section></section>
+```
+
+So then we can add stylings to the class `App` in `index.html` like so: 
+
+```css
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+```
+
+# 9. Wrap App in <main> tag so we can style the parent element
+
+`flex: 1` is shorthand for:
+
+```css
+flex-shrink: 1; flex-grow: 1; flex-basis: 0;
+```
+
+Give it a flex of 1 so it can always occupy the majority of the space. In other words, it will have the remaining full space given to it. Yet it grows and shrinks by a factor of 1, with no initial main size of a flex item.   
+
+We want this for our `main` tag
+
+```css
+main {
+  flex: 1;
+}
+```
+
+# 10. Create Footer component
+
+1. Create `Footer.js` under components
+2. RFC - React Functional Component code
+3. Import into our document
+
+> Trick: When typing out `<Footer />` inside `App`, just backspace on 'r' and press Enter in Visual Studio Code and it should auto import (if auto import is enabled). 
+
+What `App.js` looks like so far:
+
+```js
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
+function App() {
+  return (
+    <div className="App">
+      <main>
+        <Header />
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
+```
+
+- Now we can remove the sections and begin styling our first component
+
+# 11. Style the first component
