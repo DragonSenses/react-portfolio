@@ -791,16 +791,63 @@ So now there will be individual styling on each module css page, no need to repe
 I'd like to have this line effect around the header of "About Me" so going to have headerText container and two divs within that contains the `<h1>` .  Like so in `Aboutme.js` 
 
 ```js
+export default function Aboutme() {
+  return (
     <section id='about-me' className={styles.aboutMe}>
-      <div className={styles.headerText}>
-        <div className={styles.line}></div>
-        <h1>About Me</h1>
-        <div className={styles.line}></div>
+      <div className={styles.wrapper}>
+        <div className={styles.headerText}>
+          <div className={styles.line}></div>
+          <h1>About Me</h1>
+          <div className={styles.line}></div>
+        </div>
       </div>
     </section>
+  )
+}
 ```
 
+Then style it further.
 
+```css
+.headerText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  padding: 8px 20px;
+}
 
+.wrapper{
+  width: 850px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
 
+.line {
+  height: 2px;
+  background: #0f172a;
+  flex: 1;
+}
+```
+Later on I added a wrapper around the headerText and line so I can set a fixed width hat a certain point, seen in the wrapper style rules. So when its past a certain breakpoint, it centers that line and header in the middle. 
 
+### Side Note
+
+Later on went to add another font : Poppins for the titles, and leave Montserrat for the body.
+
+I like how Poppins gives the effects that I want. So changed this line: 
+
+`<h1 className={styles.text}>About Me</h1>`
+
+and added this in the css:
+
+```css
+.text {
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 800;
+  font-size: 2rem;
+  -webkit-text-stroke: 1.5px black;
+  -webkit-text-fill-color: transparent;
+}
+```

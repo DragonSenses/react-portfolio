@@ -10,6 +10,7 @@
 }
 
 .headerText{
+  font-family: 'Poppins', 'sans-serif';
   font-size: 4rem;
   writing-mode: vertical-rl;
   text-align: center;
@@ -57,12 +58,12 @@
     writing-mode: unset;
     text-align: unset;
     text-orientation: unset;
-    font-size: 6rem;
+    font-size: 5rem;
     letter-spacing: 4px;
   }
 
   .navItems {
     flex-direction: row;
-    font-size: 5.5rem; 
+    font-size: 5rem; 
   }
 }
