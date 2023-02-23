@@ -1,6 +1,6 @@
 # Intro
 
-Documenting my steps and journey in creating my react-portfolio website. 
+Documenting my journey & progress in creating a react-portfolio website. 
 
 # 1. Open up your terminal and go to the directory where you want your project to be located.
 
@@ -465,3 +465,284 @@ export default App;
 - Now we can remove the sections and begin styling our first component
 
 # 11. Style the first component
+
+Within the <header> tag create:
+- h1 with styles.headerText
+
+  ```jsx
+  <h1 className={styles.headerText}></h1>
+  ```
+
+- div with styles.navItems
+
+  ```jsx
+  <div className={styles.navItems}></div>
+  ```
+
+**Tip:** in Visual Studio Code, can type `div.{styles.headerText}` then Enter to create the tag
+
+---
+
+Let's break the lines of code down. 
+
+## React Recap
+
+React apps are made out of components. 
+
+A component is a piece of the UI (User Interface) that has its own logic and appearance. 
+
+React Components are JavaScript functions that return markup. 
+
+The markup syntax is called JSX. 
+
+JSX is stricter than HTML in that: 
+- You have to close tags like <br /> 
+- Component cannot return multiple JSX tags
+	- Have to wrap them into a shared parent, like a <div>...</div> or an empty <>...</> wrapper.
+
+JSX lets you put markup into JavaScript. 
+
+In JSX, braces are a delimiter, signaling to JSX that what resides in between the braces is a JavaScript expression. The other delimeter is using quotes for strings, like this: `id='1'`
+
+Everywhere inside of our JSX where we're interpolating a variable we delimit the variable with braces ( { } ). We're inserting data both as:
+
+ - text content inside of tags
+ ```js
+<div className='header'>
+  <a>
+    <i className='caret up icon'/>
+  </a>
+  {this.props.votes}
+</div>
+```
+	
+- as well as for attributes on HTML elements:
+
+```js
+<img src={this.props.productImageUrl} />
+```
+
+Interweaving props with HTML elements in this way is how we create dynamic, data-driven React components.
+
+***Curly braces let you "escape back" into JavaScript so that you can embed some variable from your code and display it to the user.***
+
+```js
+return(
+  <h1>
+    {user.name}
+  </h1>
+);
+
+
+You can also “escape into JavaScript” from JSX attributes, but you have to use curly braces instead of quotes. 
+
+For example, className="avatar" passes the "avatar" string as the CSS class, but src={user.imageUrl} reads the JavaScript user.imageUrl variable value, and then passes that value as the src attribute:
+
+```js
+return (
+  <img
+    className="avatar"
+    src={user.imageUrl}
+  />
+);
+```
+
+You can put more complex expressions inside the JSX curly braces too, for example, string concatenation:
+
+```js
+const user = {
+  name: 'Anya and Yoru by torino',
+  imageUrl: 'https://i.imgur.com/0tyiCSD.jpeg',
+  imageSize: 90,
+};
+
+export default function Profile() {
+  return (
+    <>
+      <h1>{user.name}</h1>
+      <img
+        className="avatar"
+        src={user.imageUrl}
+        alt={'Photo of ' + user.name}
+        style={{
+          width: user.imageSize,
+          height: user.imageSize
+        }}
+      />
+    </>
+  );
+}
+```
+
+In the above example, style={{}} is not a special syntax, but a regular {} object inside the style={ } JSX curly braces. You can use the style attribute when your styles depend on JavaScript variables.
+
+---
+
+Back to the example!
+
+```js
+export default function Header() {
+  return (
+    <header className={styles.header}>
+      <h1 className={styles.headerText}>Your Name</h1>
+      <div className={styles.navItems}></div>
+    </header>
+  )
+}
+```
+
+The css class of the h1 and div "escape into JavaScript" from JSX attributes by using curly braces. So the `{styles.headerText}` reads the JavaScript `styles.headerText` variable value, and then passes that value as the `className` attribute (which in then turns into `class` attribute of h1) Note that since JSX is rendered as JavaScript, and `class` is a reserved word in JavaScript, therefore `className` attribute is used instead.
+
+# 11.5 still styling our component
+
+In `header.module.css` which is the `styles` that we imported for `Header.js`, add `display: flex` property for the header so we can have row on small screens and column on big screens (so I'll add media query later). Then add `justify-content: center;` and `align-items: center;` which centers it horizontally and vertically respectively, so our content will be in the middle. 
+
+Target the `headerText` here for styling. 
+
+```css
+.headerText{
+  font-size: 4rem;
+  writing-mode: vertical-rl;
+  text-align: center;
+  text-orientation: upright;
+  letter-spacing: -0.5ch;
+  font-weight: 800;
+  text-shadow: 0.03em 0.03em 0 rgb(0, 255, 213),
+    0.06em 0.06em 0 rgb(154, 192, 18),
+    0.09em 0.09em 0 rgb(226, 143, 87),
+    0.11em 0.11em 0 rgb(161, 24, 127);
+}
+```
+- text-shadow gives it that pop-out neon-like effect
+
+# 12. Adding Icons for the navbar
+
+[Free font-awesome icons](https://fontawesome.com/search?o=r&m=free)
+
+Get some icons with the links and paste it within the `div className={styles.navItems}`. 
+
+Then style our navItems. 
+
+``css
+.navItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: 4.5rem;
+}
+```
+
+Now we want these icons to change color as we hover over. 
+
+Let's style them:
+
+```css
+.icons {
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+.icons:hover {
+  color: aqua;
+  transform: scale(1.1);
+}
+```
+
+Now we have to apply these class names in the JSX icon elements.
+
+To do so we need to:
+- Remove the double quotes
+- Wrap the className's value in backticks
+- Wrap that backticked string with curly brackets (to signal to JSX that this is a JavaScript expression)
+- Then interpolate another variable as a class for the HTML attribute className, in this case it is `${styles.icons}`
+
+In visual studio code: 
+1. Remove the double quotes
+2. Highlight the className value string
+3. Press `{` then backtick and it should wrap it
+4. Apply the styles
+
+So this line:
+
+```js
+<i className="fa-solid fa-dragon"></i>
+```
+
+turns into:
+
+```js
+<i className={`fa-solid fa-dragon ${styles.icons}`}></i>
+```
+
+Do the same for the rest of the icons. 
+
+# 13. Finish up the Header component
+
+Style the navigation icons. And also change how header looks on small viewports: 
+
+```css
+.icons {
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+.icons:hover {
+  color: aqua;
+  transform: scale(1.1);
+  text-shadow: 0.03em 0.03em 0 white;
+}
+
+@media (min-width: 640px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .headerText {
+    writing-mode: unset;
+    text-align: unset;
+    text-orientation: unset;
+    font-size: 6rem;
+    letter-spacing: 4px;
+  }
+
+  .navItems {
+    flex-direction: row;
+    font-size: 5.5rem; 
+  }
+}
+```
+
+# 14. Create Aboutme component
+
+- `Aboutme.js` under components folder
+- rfc command
+- Swap out the `div` for `section` so styling rules apply to it
+- Give it a proper id to the section, in lowercase with dashes if needed (e.g., id="about-me")
+- In `App.js` render that component, and automatically import it
+
+Note: *Why add an `id`?* I will wrap the icon in anchor tag with an `href` value of "#id-name". 
+
+e.g., `<a href='#about-me'>` ...icon here... `</a>` will allow the User to click the icon and it will navigate to that section. 
+
+**Important**: the `#` in the href will navigate them to that section of the page (or the page itself if just `#` alone). Without the `#` symbol, it will take them to a new page. 
+
+> When clicked, we got redirected immediately so we should add `scroll-behavior` style rule to make the experience a bit smoother:
+
+In `index.html`, add this within style tag: 
+
+```css
+html {
+  scroll-behavior: smooth;
+}
+```
+
+# 15. Create Experience component 
+
+Repeat step 14)
+
+# 16. Create Projects component
+
+Repeat step 14)
+

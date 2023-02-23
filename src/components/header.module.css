@@ -2,4 +2,59 @@
   background: #0f172a;
   color: white;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerText{
+  font-size: 4rem;
+  writing-mode: vertical-rl;
+  text-align: center;
+  text-orientation: upright;
+  letter-spacing: -0.5ch;
+  font-weight: 800;
+  text-shadow: 0.03em 0.03em 0 rgb(0, 255, 213),
+    0.06em 0.06em 0 rgb(154, 192, 18),
+    0.09em 0.09em 0 rgb(226, 143, 87),
+    0.11em 0.11em 0 rgb(161, 24, 127);
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: 4.5rem;
+}
+
+.icons {
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+.icons:hover {
+  color: aqua;
+  transform: scale(1.1);
+  text-shadow: 0.03em 0.03em 0 white;
+}
+
+@media (min-width: 640px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .headerText {
+    writing-mode: unset;
+    text-align: unset;
+    text-orientation: unset;
+    font-size: 6rem;
+    letter-spacing: 4px;
+  }
+
+  .navItems {
+    flex-direction: row;
+    font-size: 5.5rem; 
+  }
 }
