@@ -847,7 +847,111 @@ and added this in the css:
   font-family: 'Poppins', 'sans-serif';
   font-weight: 800;
   font-size: 2rem;
-  -webkit-text-stroke: 1.5px black;
+  -webkit-text-stroke: 1.5px #0f172a;
   -webkit-text-fill-color: transparent;
 }
+
+@media (min-width: 640px) {
+  .text {
+    font-size: 4rem;
+    -webkit-text-stroke: 2px #0f172a;
+  }
+}
 ```
+
+## Adding content to the Aboutme section
+
+```js
+        <div className={styles.sectionContent}>
+          <p>
+              I am a ...
+          </p>
+        </div>
+```
+
+Then add `flex-drection: column;` style rule inside wrapper so text sits underneath. 
+
+Next style the sectionContent. Give a padding of 20 all around. On mobile and small devices would like a grid to have a single column. 
+
+We repeat with a minmax function that defines a size range, which we want the minimum to be 0 and maximum to be 1 fraction. 
+
+So far: 
+
+```css
+.sectionContent {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(1, minMax(0, 1fr));
+  text-align: justify;
+}
+
+.content {
+  font-weight: 500;
+  font-size: 0.75 rem;
+  line-height: 1rem;
+  border: 1px solid #0f172a;
+  padding: 8px;
+}
+```
+
+`text-align: justify;` isn't consistent so switching that to `text-align: center;`.
+
+
+Later on bigger screens where the breakpoint is 640px, make the content paragraphs get out of the 1 grid column and into 3 columns. 
+
+
+Then I removed `justify-content: center;` from the section and add padding top to each of the sections instead.
+
+### Centering text in a box
+
+Had to convert content class from `<p>` to `<div>`, so that on 640px breakpoints, I can center separate the `<p>` tags that contain the actual text and center them within their parent element. 
+
+On mobile devices the proper grid is applied. But I want content div to display flex within it so that the child element's wrapped like this: 
+
+```js
+            <p className={styles.paragraph}>
+             	 I take pride in writing clean and reusable code.
+            </p>
+```
+can be centered within those content `<div>` containers which `display: flex`, so then on larger screens they look cleaner with the 3 grid display.
+
+Take a look at the `aboutme.module.css`
+
+```css
+.sectionContent {
+  padding: 20px;
+  display: grid;
+  gap: 20px; 
+  grid-template-columns: repeat(1, minMax(0, 1fr));
+  text-align: center;
+}
+
+.content {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid #0f172a;
+  padding: 8px;
+}
+
+@media (min-width: 640px) {
+  .text {
+    font-size: 4rem;
+    -webkit-text-stroke: 2px #0f172a;
+  }
+
+  .sectionContent {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .content {
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+  }
+
+  .paragraph {
+    margin: auto;
+  }
+}
+``` 
