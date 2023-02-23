@@ -766,4 +766,41 @@ Then in `header.module.css`
 }
 ```
 
+# 18. Style the Aboutme component
+
+- Add className of styles.aboutMe
+- Create corresponding css file
+- Import the css module file in Aboutme component
+
+I could be more efficient and have these `section` components have predefined css style rules already inherited. So back to `index.html` we add in `section`. 
+
+A design decision here would be that the content within the section will be centered within the page. 
+
+```css
+      section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+```
+
+So now there will be individual styling on each module css page, no need to repeat. So now in the `aboutme.module.css` file made we can make individual styling rules. 
+
+I'd like to have this line effect around the header of "About Me" so going to have headerText container and two divs within that contains the `<h1>` .  Like so in `Aboutme.js` 
+
+```js
+    <section id='about-me' className={styles.aboutMe}>
+      <div className={styles.headerText}>
+        <div className={styles.line}></div>
+        <h1>About Me</h1>
+        <div className={styles.line}></div>
+      </div>
+    </section>
+```
+
+
+
+
 
