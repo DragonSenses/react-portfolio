@@ -1,0 +1,36 @@
+.headerText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  padding: 8px 20px;
+}
+
+.wrapper{
+  width: 850px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  height: 2px;
+  background: #0f172a;
+  flex: 1;
+}
+
+.text {
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 800;
+  font-size: 2.5rem;
+  -webkit-text-stroke: 1.5px #0f172a;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .text {
+    font-size: 4rem;
+    -webkit-text-stroke: 2px #0f172a;
+  }
+
+}
