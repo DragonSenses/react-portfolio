@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 14px;
+  user-select: none;
 }
 
 .headerText{
@@ -26,7 +28,7 @@
   justify-content: center;
   align-items: center;
   gap: 50px;
-  font-size: 4.5rem;
+  font-size: 4rem;
 }
 
 .icons {
@@ -38,6 +40,12 @@
   color: aqua;
   transform: scale(1.1);
   text-shadow: 0.03em 0.03em 0 white;
+}
+
+.anchor {
+  text-decoration: inherit;
+  outline: none;
+  color: unset;
 }
 
 @media (min-width: 640px) {

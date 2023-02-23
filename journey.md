@@ -746,3 +746,24 @@ Repeat step 14)
 
 Repeat step 14)
 
+Now wrap each of the icons with anchor tags and href to that section of the webpage. 
+
+# 17. Remove the default styling of anchor tags
+
+Give `<a>` tags className of styles.anchor. 
+
+```js
+<a href='#about-me' className={styles.anchor}>
+```
+
+Then in `header.module.css` 
+
+```css
+.anchor {
+  text-decoration: inherit;
+  outline: none;
+  color: unset;
+}
+```
+
+
