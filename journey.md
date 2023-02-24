@@ -1060,3 +1060,101 @@ export default function SectionIntroduction(props) {
   )
 }
 ```
+
+The Aboutme section should be just like how it was previously. 
+
+Now let's apply similar things to `Experience.js`.
+
+```js
+import React from 'react'
+import styles from './experience.module.css'
+import SectionIntroduction from './SectionIntroduction'
+
+export default function Experience() {
+  return (
+    <section id='experience'>
+      <div className={styles.wrapper}>
+        <SectionIntroduction>EXPERIENCE</SectionIntroduction>
+        <div className={styles.sectionContent}></div>
+      </div>
+    </section>
+  )
+}
+```
+
+Upon looking at the web page, there's someting wrong:
+
+Can't see the header text. Try highlighting it and we see that the text color is the same as the dark background.
+
+# 21. Add a prop called `dark` which indicates the background is dark
+
+Let's pass this information back to `SectionIntroduction` so that we can indicate it to change the color of the header text. 
+
+Add `dark={true}` to Experience component, like so:
+
+```js
+<SectionIntroduction dark={true}>EXPERIENCE</SectionIntroduction>
+```
+
+Then in `SectionIntroduction.js`, we can receive that data and apply a different style rule conditionally for classes that have colors specified.
+
+```js
+export default function SectionIntroduction(props) {
+  const { children, dark } = props;
+  return (
+    <div className={styles.headerText}>
+    <div className={(dark ? styles.lineDark: styles.line)}></div>
+      <h1 className={(dark ? styles.textDark: styles.text)}>{children}</h1>
+      <div className={(dark ? styles.lineDark: styles.line)}></div>
+    </div>
+  )
+}
+```
+
+Then go to to the corresponding css file, and find any class with a a rule that has to do with colors, in this case it is `.line` and `.text`. Duplicate them and append a Dark to it.  
+
+### Note: we can make more efficient CSS style rules
+
+Since `.line` and `.lineDark` share most properties with the only difference being the colors.
+
+Set set its shared properties, then specify unique properties later. 
+
+```css
+.line,
+.lineDark {
+  height: 2px;
+  flex: 1;
+}
+
+.line {
+  background: #0f172a;
+}
+
+.lineDark {
+  background: white;
+}
+
+.text,
+.textDark {
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 800;
+  font-size: 2.5rem;
+  -webkit-text-fill-color: transparent;
+}
+
+.text {
+  -webkit-text-stroke: 1.5px #0f172a;
+}
+
+.textDark {
+  -webkit-text-stroke: 1.5px white;
+}
+
+@media (min-width: 640px) {
+  .text,
+  .textDark {
+    font-size: 4rem;
+    -webkit-text-stroke-width: 2px;
+  }
+}
+```
