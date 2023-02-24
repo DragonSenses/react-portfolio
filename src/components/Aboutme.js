@@ -133,6 +133,13 @@ export default function Aboutme() {
           </div>
         </div> */}
 
+        <div className={styles.icons}>
+          <i className="fa-solid fa-dragon"></i>
+          <i className="fa-solid fa-dumbbell"></i>
+          <i className="fa-solid fa-book-open-reader"></i>
+          <i className="fa-solid fa-mug-hot"></i>
+        </div>
+
       </div>
     </section>
   )

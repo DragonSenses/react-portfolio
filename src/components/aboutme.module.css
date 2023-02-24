@@ -48,6 +48,14 @@
   font-family: 'Poppins', 'sans-serif';
 }
 
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 2rem;
+  padding: 40px 0;
+}
+
 @media (min-width: 640px) {
   .text {
     font-size: 4rem;
@@ -72,5 +80,10 @@
   .paragraph {
     margin: auto;
     padding: 4px;
+  }
+
+  .icons {
+    font-size: 3rem;
+    gap: 60px;
   }
 }
