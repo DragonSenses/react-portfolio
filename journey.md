@@ -967,3 +967,96 @@ flex-direction: column;
 
 # 19. Experience Component
 
+- Create corresponding css file `experience.module.css` 
+- Going to borrow the styling of `aboutme.module.css` from `headerText` to `text`
+- Also going to use the headerText component type from `Aboutme.js`
+
+# 20. Declutttering our Components
+
+**Notice: Once we get to this level of code duplication, its a sign that I should create a new component**
+
+- Create `SectionIntroduction.js`
+- rfc - React Functional Component template
+
+```js
+import React from 'react'
+
+export default function SectionIntroduction() {
+  return (
+    <div>SectionIntroduction</div>
+  )
+}
+```
+
+The following code that I'd like to reuse:
+
+```js
+    <div className={styles.headerText}>
+      <div className={styles.line}></div>
+      <h1 className={styles.text}>About Me</h1>
+      <div className={styles.line}></div>
+    </div>
+```
+
+Style rules that apply (put in `sectionintroduction.module.css`)
+
+```css
+.headerText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  padding: 40px 20px 10px 20px;
+}
+
+.line {
+  height: 2px;
+  background: #0f172a;
+  flex: 1;
+}
+
+.text {
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 800;
+  font-size: 2.5rem;
+  -webkit-text-stroke: 1.5px #0f172a;
+  -webkit-text-fill-color: transparent;
+}
+```
+
+Now swap out the reusable code for the new component in `Aboutme.js`
+
+```js
+import React from 'react'
+import styles from './aboutme.module.css'
+import SectionIntroduction from './SectionIntroduction'
+
+export default function Aboutme() {
+  return (
+    <section id='about-me' className={styles.aboutMe}>
+      <div className={styles.wrapper}>
+
+        <SectionIntroduction>ABOUT ME</SectionIntroduction>
+
+        <div className={styles.sectionContent}>
+        // ... code continues
+```
+
+Note how we just wrap the text we want "ABOUT ME" inside `<SectionIntroduction>` and we can receive that data into SectionIntroduction as `props`, as a child item. We can render that child item within the div we'd like to replace in the code.
+
+In `SectionIntroduction.js`
+```js
+import React from 'react'
+import styles from './sectionintroduction.module.css'
+
+export default function SectionIntroduction(props) {
+  const { children } = props;
+  return (
+    <div className={styles.headerText}>
+      <div className={styles.line}></div>
+      <h1 className={styles.text}>{children}</h1>
+      <div className={styles.line}></div>
+    </div>
+  )
+}
+```
