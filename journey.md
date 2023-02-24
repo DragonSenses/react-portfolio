@@ -955,3 +955,15 @@ Take a look at the `aboutme.module.css`
   }
 }
 ``` 
+
+#### Having content sit on top of each other
+
+These lines in css for the parent element really helps:
+
+```css
+display: flex;
+flex-direction: column;
+```
+
+# 19. Experience Component
+
