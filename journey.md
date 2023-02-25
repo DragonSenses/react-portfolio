@@ -1171,11 +1171,11 @@ export default function Experience() {
 
         <SectionIntroduction dark={true}>EXPERIENCE</SectionIntroduction>
 
-        <ul className={styles.sectionContent}>
+        <div className={styles.sectionContent}>
           <li>item 1</li>
           <li>item 2</li>
           <li>item 3</li>
-        </ul>
+        </div>
         
       </div>
     </section>
@@ -1187,7 +1187,6 @@ export default function Experience() {
 .sectionContent {
   display: flex;
   flex-direction: column;
-  list-style-position: inside;
   width: 100%;
   background: green;
   padding: 20px;
@@ -1201,4 +1200,88 @@ export default function Experience() {
 ```
 
 Going to make `<li>` elements a component, so they can be targeted for styling.
-Creating a `ListEntry.js` component. 
+
+## Creating a `ListEntry.js` component. 
+
+- rfc
+- Which takes in `props` as a parameter
+- Destructure `title`, `date`, `children` from props.
+- renders a combination of all of the items
+
+so far: 
+
+```js
+export default function ListEntry(props) {
+  const { title, date, children } = props;
+  return (
+    <ul>
+      <div>
+        <h1>{title}</h1><h1>{date}</h1>
+      </div>
+      <li></li>
+    </ul>
+  )
+}
+```
+
+A title and date above, and all the list items below. For consistency, I should separate them into two separate items to be rendered in the page.
+
+```js
+export default function ListEntry(props) {
+  const { title, date, children } = props;
+  return (
+    <>
+      <div>
+        <h1>{title}</h1><h1>{date}</h1>
+      </div>
+      <ul>
+        <li></li>
+      </ul>
+    </>
+  )
+}
+```
+
+## Example of how `ListEntry` component would work:
+
+In Experience:
+
+```js
+export default function Experience() {
+  return (
+    <section id='experience'>
+      <div className={styles.wrapper}>
+
+        <SectionIntroduction dark={true}>EXPERIENCE</SectionIntroduction>
+
+        <div className={styles.sectionContent}>
+          <ListEntry title={"Workplace"} date={"2017 - 2022"}>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+          </ListEntry>
+        </div>
+        
+      </div>
+    </section>
+  )
+}
+```
+
+Back in `ListEntry` we render out any of the list item children
+
+```js
+export default function ListEntry(props) {
+  const { title, date, children } = props;
+  return (
+    <>
+      <div>
+        <h1>{title}</h1><h1>{date}</h1>
+      </div>
+      <ul>
+        {children}
+      </ul>
+    </>
+  )
+}
+```

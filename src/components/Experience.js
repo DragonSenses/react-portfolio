@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './experience.module.css'
+import ListEntry from './ListEntry'
 import SectionIntroduction from './SectionIntroduction'
 
 export default function Experience() {
@@ -9,11 +10,13 @@ export default function Experience() {
 
         <SectionIntroduction dark={true}>EXPERIENCE</SectionIntroduction>
 
-        <ul className={styles.sectionContent}>
-          <li>item 1</li>
-          <li>item 2</li>
-          <li>item 3</li>
-        </ul>
+        <div className={styles.sectionContent}>
+          <ListEntry title={"Workplace"} date={"2017 - 2022"}>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+          </ListEntry>
+        </div>
         
       </div>
     </section>
