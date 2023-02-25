@@ -6,10 +6,14 @@ export default function Experience() {
   return (
     <section id='experience'>
       <div className={styles.wrapper}>
-        
+
         <SectionIntroduction dark={true}>EXPERIENCE</SectionIntroduction>
 
-        <div className={styles.sectionContent}></div>
+        <ul className={styles.sectionContent}>
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 3</li>
+        </ul>
         
       </div>
     </section>

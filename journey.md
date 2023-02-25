@@ -1158,3 +1158,47 @@ Set set its shared properties, then specify unique properties later.
   }
 }
 ```
+
+# 22. Experience component
+
+Going to turn `sectionContent` into a list 
+
+```js
+export default function Experience() {
+  return (
+    <section id='experience'>
+      <div className={styles.wrapper}>
+
+        <SectionIntroduction dark={true}>EXPERIENCE</SectionIntroduction>
+
+        <ul className={styles.sectionContent}>
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 3</li>
+        </ul>
+        
+      </div>
+    </section>
+  )
+}
+```
+
+```css
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  width: 100%;
+  background: green;
+  padding: 20px;
+}
+
+@media (min-width: 640px) {
+  .sectionContent {
+    padding: 20px 50px;
+  }
+}
+```
+
+Going to make `<li>` elements a component, so they can be targeted for styling.
+Creating a `ListEntry.js` component. 

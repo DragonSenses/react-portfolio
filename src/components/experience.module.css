@@ -5,3 +5,18 @@
   align-items: center;
   flex-direction: column;
 }
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  width: 100%;
+  background: green;
+  padding: 20px;
+}
+
+@media (min-width: 640px) {
+  .sectionContent {
+    padding: 20px 50px;
+  }
+}
