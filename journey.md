@@ -1288,7 +1288,7 @@ export default function ListEntry(props) {
 Later on at some point I changed it from `<> </>` to `<div></div>` so I can create a gap spacing between each ListEntry and not within it. 
 
 
-## 23. Planning Projects Component
+# 23. Planning Projects Component
 
 - Set up the component file, with css, SectionIntro, etc.
 
@@ -1298,3 +1298,68 @@ Going to map this component to some images of projects.
 - Within it a `img` div
 - Going to display image of each project
 - Overlay text on hover
+
+## Styling Projects
+
+**Mobile-First** approach so going to have a grid. 
+
+- Then have the image fit the page so style the `imgDisplay` container with `max-width: 100%` 
+- Also apply same rule to the `img` class of the actual `<img>`. 
+
+Later on found an issue where the image is still overflowing so added this line:
+
+```css
+object-fit: contain;
+```
+
+**Bigger Screens** have the `sectionContent` go up in the number of columns. 
+
+On "small" screens with a minimum of `640px` go up to 2 columns.
+On "large" screens with a breakpoint at `1024px` go up to 3 columns. 
+
+`products.module.css` so far:
+
+```css
+.wrapper{
+  width: 850px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sectionContent {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.imgDisplay {
+  max-width: 100%;
+object-fit: contain;
+
+}
+
+.img {
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .sectionContent {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionContent {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  }
+}
+```
+
+## The Project Overlay
+
+Going to have this `<div className={styles.overlay}>` contain a heading and paragraph explaining it along with another div within that contains two anchor tags. One links to the live project demo and the other to the GitHub link.
+
+

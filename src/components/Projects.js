@@ -11,8 +11,15 @@ export default function Projects() {
         <SectionIntroduction>PROJECTS</SectionIntroduction>
         <div className={styles.sectionContent}>
           <div className={styles.imgDisplay}>
-            <img src={picture} alt="" />
-            <div className={styles.overlay}></div>
+            <img className={styles.img} src={picture} alt="project of ecommerce site" />
+            <div className={styles.overlay}>
+              <h2>Project</h2>
+              <p>Paragraph describing project</p>
+              <div>
+                <a href="">Live Demo Link</a>
+                <a href="">Github Link</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
