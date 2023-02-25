@@ -1285,3 +1285,4 @@ export default function ListEntry(props) {
   )
 }
 ```
+Later on at some point I changed it from `<> </>` to `<div></div>` so I can create a gap spacing between each ListEntry and not within it. 

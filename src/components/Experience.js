@@ -14,6 +14,11 @@ export default function Experience() {
           <ListEntry title={"Workplace"} date={"2017 - 2022"}>
             <li>List Item</li>
             <li>List Item</li>
+          </ListEntry>
+          <ListEntry title={"Workplace"} date={"2017 - 2022"}>
+            <li>List Item</li>
+          </ListEntry>
+          <ListEntry title={"Workplace"} date={"2017 - 2022"}>
             <li>List Item</li>
           </ListEntry>
         </div>
