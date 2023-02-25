@@ -1,0 +1,21 @@
+.wrapper{
+  width: 850px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+@media (min-width: 640px) {
+  .sectionContent {
+    padding: 20px 50px;
+  }
+}

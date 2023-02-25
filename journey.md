@@ -1286,3 +1286,15 @@ export default function ListEntry(props) {
 }
 ```
 Later on at some point I changed it from `<> </>` to `<div></div>` so I can create a gap spacing between each ListEntry and not within it. 
+
+
+## 23. Planning Projects Component
+
+- Set up the component file, with css, SectionIntro, etc.
+
+Going to map this component to some images of projects. 
+
+- Have a container for the content -> `sectionContent` as the class of the div.
+- Within it a `img` div
+- Going to display image of each project
+- Overlay text on hover
