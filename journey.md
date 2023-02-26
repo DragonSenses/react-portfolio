@@ -1459,3 +1459,16 @@ export default function ImgOverlay(props) {
 ```
 
 So now in `Projects.js` we can render out `ImgOverlay` component:
+
+```js
+<ImgOverlay
+  imgSrc={img1}
+  description={"first project is an ecommerce site"}
+  title={"PROJECT 1"}
+  projectLink={"https://google.com"}
+  githubLink={"https://google.com"}>
+  Paragraph describing project.
+  Built with: <strong>Stripe.js</strong> and <strong>Commerce.js</strong>
+</ImgOverlay>
+```
+

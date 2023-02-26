@@ -1,13 +1,14 @@
 import React from 'react'
+import styles from './imgoverlay.module.css'
 
 export default function ImgOverlay(props) {
-  const { imgSrc, title, description, githubLink, projectLink, children } = props;
+  const { imgSrc, description, title, githubLink, projectLink, children } = props;
   return (
     <div className={styles.imgDisplay}>
-      <img className={styles.img} src={imgSrc} alt="project of ecommerce site" />
+      <img className={styles.img} src={imgSrc} alt={description} />
       <div className={styles.overlay}>
         <h2 className={styles.overlayHeader}>{title.toUpperCase()}</h2>
-        <p className={styles.paragraph}>Paragraph describing project.
+        <p className={styles.paragraph}>
           {children}
         </p>
         <div className={styles.links}>
