@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 8px;
+  padding: 20px;
 }
 
 .overlayHeader {
@@ -47,12 +47,15 @@
 .button {
   cursor: pointer;
   background: #0f172a;
-  transition-duration: 300ms;
   color: inherit;
   text-decoration: none;
   font-family: 'Poppins', 'sans-serif';
+  transition-duration: 300ms;
+  padding: 4px 8px;
 }
 
 .button:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
+  color: #0f172a;
+  background: white;
 }

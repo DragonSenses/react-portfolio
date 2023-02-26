@@ -1539,63 +1539,25 @@ So now in `Projects.js` we can render out `ImgOverlay` component:
 
 We do not have any of this information in the `@media`, which is good.
 
-```css
-.imgDisplay {
-  max-width: 100%;
-  object-fit: contain;
-  position: relative;
-  transition-duration: 300ms;
-}
+## Polishing up the `ImgOverlay` component
 
-.img {
-  max-width: 100%;
-}
+Upon clicking that link, I would want the link to open a new page for the user. 
 
-.overlay {
-  position: absolute;
-  inset: 0; 
-  opacity: 0;
-  transition-duration: 300ms;
-  background: #0f172a;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding: 8px;
-}
+So add `target="_blank"` within the `<a>` tag, as it is desired to have the link open in a new tab.
+However ESLint mentioned that this must be accompanied with together with `target="_blank" rel="noreferrer"` as it may be a security risk for older browsers. So no send off.
 
-.overlayHeader {
-  font-family: 'Poppins', 'sans-serif';
-  font-weight: 500;
-  text-decoration: underline;
-}
+## **Make sure that all images have the same dimensions!**
 
-.imgDisplay:hover .overlay {
-  opacity: 0.8;
-}
+### User Experience: Modifying the button a bit more to indicate they are clickable
 
-.links {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-around;
-}
+- Give button a padding 4px horizontal 8px vertical
+- Give buttons a background color on hover
+- Remove the `transform: scale(1.1)` (tentative)
 
-.icon {
-  font-size: 2rem;
-}
+# 25. Have mutliple `ImgOverlay` components in `Projects` section
 
-.button {
-  cursor: pointer;
-  background: #0f172a;
-  transition-duration: 300ms;
-  color: inherit;
-  text-decoration: none;
-  font-family: 'Poppins', 'sans-serif';
-}
+Copy the component a few times, and import the corresponding images (just copy this line a few times as well: `import img1 from '../assets/img1.jpg'`) so we can see how it looks.
 
-.button:hover {
-  transform: scale(1.1);
-}
-```
+I'd like the overlay to sit in a bit tighter so `padding: 20px;`
+
+Also add a gap of `gap: 5px;` on smaller screens for `sectionContent`. For larger screens, increase this gap to 10px.

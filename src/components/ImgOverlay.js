@@ -12,10 +12,12 @@ export default function ImgOverlay(props) {
           {children}
         </p>
         <div className={styles.links}>
-          <a className={styles.button} href={githubLink}>
+          <a className={styles.button} href={githubLink} target="_blank" rel="noreferrer">
             <i className={`fa-brands fa-github ${styles.icon}`}></i>
           </a>
-          <a className={styles.button} href={projectLink}>Link to Project &#8594;</a>
+          <a className={styles.button} href={projectLink} target="_blank" rel="noreferrer">
+            Link to Project &#8594;
+          </a>
         </div>
       </div>
     </div>
