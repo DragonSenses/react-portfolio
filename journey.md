@@ -1472,3 +1472,130 @@ So now in `Projects.js` we can render out `ImgOverlay` component:
 </ImgOverlay>
 ```
 
+## Styling Img Overlay
+
+- Create `imgoverlay.module.css` and copy over the specific styles used from `projects.module.css`
+
+```css
+.imgDisplay {
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
+  transition-duration: 300ms;
+}
+
+.img {
+  max-width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0; 
+  opacity: 0;
+  transition-duration: 300ms;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.overlayHeader {
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.imgDisplay:hover .overlay {
+  opacity: 0.8;
+}
+
+.links {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.button {
+  cursor: pointer;
+  background: #0f172a;
+  transition-duration: 300ms;
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Poppins', 'sans-serif';
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+```
+
+We do not have any of this information in the `@media`, which is good.
+
+```css
+.imgDisplay {
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
+  transition-duration: 300ms;
+}
+
+.img {
+  max-width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0; 
+  opacity: 0;
+  transition-duration: 300ms;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.overlayHeader {
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.imgDisplay:hover .overlay {
+  opacity: 0.8;
+}
+
+.links {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.button {
+  cursor: pointer;
+  background: #0f172a;
+  transition-duration: 300ms;
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Poppins', 'sans-serif';
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+```
