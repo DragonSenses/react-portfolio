@@ -13,9 +13,10 @@ export default function Projects() {
           <div className={styles.imgDisplay}>
             <img className={styles.img} src={picture} alt="project of ecommerce site" />
             <div className={styles.overlay}>
-              <h2>Project</h2>
-              <p>Paragraph describing project</p>
-              <div>
+              <h2 className={styles.overlayHeader}>PROJECT 1</h2>
+              <p className={styles.paragraph}>Paragraph describing project.
+              Technologies: Stripe.js and Commerce.js</p>
+              <div className={styles.links}>
                 <a href="">Live Demo Link</a>
                 <a href="">Github Link</a>
               </div>
