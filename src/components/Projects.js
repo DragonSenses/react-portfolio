@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './projects.module.css'
 import SectionIntroduction from './SectionIntroduction'
-import picture from '../assets/picture.png'
+import picture from '../assets/img1.jpg'
 
 
 export default function Projects() {

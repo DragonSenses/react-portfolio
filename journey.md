@@ -1362,4 +1362,4 @@ object-fit: contain;
 
 Going to have this `<div className={styles.overlay}>` contain a heading and paragraph explaining it along with another div within that contains two anchor tags. One links to the live project demo and the other to the GitHub link.
 
-
+Uploaded some sample stock images to style.
