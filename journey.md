@@ -1363,3 +1363,26 @@ object-fit: contain;
 Going to have this `<div className={styles.overlay}>` contain a heading and paragraph explaining it along with another div within that contains two anchor tags. One links to the live project demo and the other to the GitHub link.
 
 Uploaded some sample stock images to style.
+
+
+### Issue I came across was that styles not applied to an `<a>`
+
+```js
+<a className={styles.button}>Link to Project &#8594;</a>
+```
+
+To close the issue we must add the `href` attribute to close the issue.
+
+```js
+// Almost works 
+<a href="#" className={styles.button}>Link to Project &#8594;</a>
+```
+
+### Removing the default link styling
+
+Add this line to the button:
+
+```css
+color: inherit;
+text-decoration: none;
+```

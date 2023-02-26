@@ -15,10 +15,12 @@ export default function Projects() {
             <div className={styles.overlay}>
               <h2 className={styles.overlayHeader}>PROJECT 1</h2>
               <p className={styles.paragraph}>Paragraph describing project.
-              Technologies: Stripe.js and Commerce.js</p>
+              Built with: <strong>Stripe.js</strong> and <strong>Commerce.js</strong></p>
               <div className={styles.links}>
-                <a href="">Live Demo Link</a>
-                <a href="">Github Link</a>
+                <a className={styles.button} href="#">
+                  <i className={`fa-brands fa-github ${styles.icon}`}></i>
+                </a>
+                <a className={styles.button} href="#">Link to Project &#8594;</a>
               </div>
             </div>
           </div>
