@@ -1386,3 +1386,76 @@ Add this line to the button:
 color: inherit;
 text-decoration: none;
 ```
+
+# 24. Image Overlay Component
+
+All the code for the image overlay was a mission to create. 
+
+**Time to make a new component.**
+
+The code in `Projects.js`:
+
+```js
+import React from 'react'
+import styles from './projects.module.css'
+import SectionIntroduction from './SectionIntroduction'
+import picture from '../assets/img1.jpg'
+
+
+export default function Projects() {
+  return (
+    <section id='projects'>
+      <div className={styles.wrapper}>
+        <SectionIntroduction>PROJECTS</SectionIntroduction>
+        <div className={styles.sectionContent}>
+
+          <div className={styles.imgDisplay}>
+            <img className={styles.img} src={picture} alt="project of ecommerce site" />
+            <div className={styles.overlay}>
+              <h2 className={styles.overlayHeader}>PROJECT 1</h2>
+              <p className={styles.paragraph}>Paragraph describing project.
+              Built with: <strong>Stripe.js</strong> and <strong>Commerce.js</strong></p>
+              <div className={styles.links}>
+                <a className={styles.button} href="#">
+                  <i className={`fa-brands fa-github ${styles.icon}`}></i>
+                </a>
+                <a className={styles.button} href="#">Link to Project &#8594;</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+```
+
+So create the `ImgOverlay.js`, and take every line starting from `<div className={styles.imgDisplay}>` and ending within that div and paste it within `ImgOverlay.js`. 
+
+Take all the data we can substitute and pass them as `props` to `ImgOverlay` component:
+
+- imgSrc
+- title
+- description
+- github link
+- project link
+
+```js
+export default function ImgOverlay(props) {
+  const { imgSrc, title, description, githubLink, projectLink } = props;
+```
+
+and swap out any of the above information for what it may be. 
+
+### Instead of paragraph, we can say its the `children` content
+
+So within `<p className={styles.paragraph}></p>` we can put `{children}` instead.
+
+Then we *destructure* `children` out of props: 
+```js
+export default function ImgOverlay(props) {
+  const { imgSrc, title, description, githubLink, projectLink, children } = props;
+```
+
+So now in `Projects.js` we can render out `ImgOverlay` component:
