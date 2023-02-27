@@ -1592,3 +1592,56 @@ Add to `className` of icons to target CSS style rules.
 <i className={`fa-brands fa-github ${styles.icon}`}></i>
 ```
 5. Do the same for every icon
+
+## Wrapping them in an anchor tag, and embed the icon class in it
+
+```js
+export default function Footer() {
+  return (
+    <footer className={styles.footerWrapper}>
+      <a href="https://github.com/DragonSenses" className={styles.icon} target="_blank" rel="noreferrer">
+        <i className="fa-brands fa-github"></i>
+      </a>
+
+      <a href="https://google.com/" className={styles.icon} target="_blank" rel="noreferrer">
+        <i className="fa-solid fa-envelope"></i>
+      </a>
+
+      <a href="https://google.com/" className={styles.icon} target="_blank" rel="noreferrer">
+        <i className="fa-solid fa-address-card"></i>
+      </a>
+    </footer>
+  )
+}
+```
+
+`footer.module.css`
+
+```css
+.footerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 14px 0;
+  margin: 30px;
+  font-size: 2rem;
+  background: #0f172a;
+  color: white;
+}
+
+.icon {
+  cursor: pointer;
+  transition-duration: 300ms;
+  padding: 0 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon:hover {
+  background: white;
+  color: #0f172a
+}
+```
+
+#
