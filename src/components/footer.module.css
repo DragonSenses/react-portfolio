@@ -1,16 +1,25 @@
-.footerWrapper {
+.footerWrapper,
+.footerWrapperDark {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
-  padding: 14px 0;
-  margin: 30px;
-  font-size: 2rem;
+  padding: 16px 0;
+  font-size: 2.4rem;
+}
+
+.footerWrapper {
+  background: white;
+  color: #0f172a;
+}
+
+.footerWrapperDark {
   background: #0f172a;
   color: white;
 }
 
-.icon {
+.icon,
+.iconDark {
   cursor: pointer;
   transition-duration: 300ms;
   padding: 0 8px;
@@ -18,7 +27,24 @@
   color: inherit;
 }
 
+.icon:hover,
+.iconDark:hover {
+  transform: scale(1.1);
+}
+
 .icon:hover {
+  background: #0f172a;
+  color: white;
+}
+
+.iconDark:hover {
   background: white;
-  color: #0f172a
+  color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .footerWrapper,
+  .footerWrapperDark {
+    font-size: 2.7rem;
+  }
 }

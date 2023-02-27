@@ -1644,4 +1644,113 @@ export default function Footer() {
 }
 ```
 
-#
+# 27. Making dark and light mode of Footer Component
+
+Pass in props of dark mode.
+
+```js
+import React from 'react'
+import styles from './footer.module.css'
+
+export default function Footer(props) {
+  const { dark } = props;
+
+  return (
+    <footer className={(dark ? styles.footerWrapperDark : styles.footerWrapper)}>
+      <a href="https://github.com/DragonSenses" 
+         className={(dark ? styles.iconDark : styles.icon)} 
+         target="_blank" rel="noreferrer"
+      >
+        <i className="fa-brands fa-github"></i>
+      </a>
+
+      <a href="https://google.com/" 
+         className={(dark ? styles.iconDark : styles.icon)} 
+         target="_blank" rel="noreferrer"
+      >
+        <i className="fa-solid fa-envelope"></i>
+      </a>
+
+      <a href="https://google.com/" 
+         className={(dark ? styles.iconDark : styles.icon)} 
+         target="_blank" rel="noreferrer"
+      >
+        <i className="fa-solid fa-address-card"></i>
+      </a>
+    </footer>
+  )
+}
+```
+
+`footer.module.css`
+```css
+.footerWrapper,
+.footerWrapperDark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 16px 0;
+  font-size: 2.4rem;
+}
+
+.footerWrapper {
+  background: white;
+  color: #0f172a;
+}
+
+.footerWrapperDark {
+  background: #0f172a;
+  color: white;
+}
+
+.icon,
+.iconDark {
+  cursor: pointer;
+  transition-duration: 300ms;
+  padding: 0 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon:hover,
+.iconDark:hover {
+  transform: scale(1.1);
+}
+
+.icon:hover {
+  background: #0f172a;
+  color: white;
+}
+
+.iconDark:hover {
+  background: white;
+  color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .footerWrapper,
+  .footerWrapperDark {
+    font-size: 2.7rem;
+  }
+}
+```
+
+So now in `App.js` we can pass data in like this:
+
+```js
+function App() {
+  return (
+    <div className="App">
+      <main>
+        <Header />
+        <Aboutme />
+        <Skills />
+        <Projects />
+        <Experience />
+      </main>
+      <Footer dark={false} />
+    </div>
+  );
+}
+```

@@ -15,7 +15,7 @@ function App() {
         <Projects />
         <Experience />
       </main>
-      <Footer />
+      <Footer dark={false} />
     </div>
   );
 }
