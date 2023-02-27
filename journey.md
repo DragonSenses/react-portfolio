@@ -1561,3 +1561,34 @@ Copy the component a few times, and import the corresponding images (just copy t
 I'd like the overlay to sit in a bit tighter so `padding: 20px;`
 
 Also add a gap of `gap: 5px;` on smaller screens for `sectionContent`. For larger screens, increase this gap to 10px.
+
+
+# 26. Making the Footer Component.
+
+- Have icons within it
+
+```js
+export default function Footer() {
+  return (
+    <footer className={styles.footerWrapper}>
+      <i className="fa-brands fa-github"></i>
+      <i className="fa-solid fa-envelope"></i>
+      <i className="fa-solid fa-address-card"></i>
+    </footer>
+  )
+}
+```
+
+Add to `className` of icons to target CSS style rules. 
+
+1. Remove double quotation marks (") of the string
+2. Highlight the string contents `fa-brands fa-github` 
+3. Type { curly bracket followed by ` backtick wrapping the highlighted expression by both in that order. 
+4. Embed the expression ${styles.icon} to the string
+
+```js
+<i className="fa-brands fa-github"></i>
+// Turns into this:
+<i className={`fa-brands fa-github ${styles.icon}`}></i>
+```
+5. Do the same for every icon

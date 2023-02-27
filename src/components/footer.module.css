@@ -1,0 +1,21 @@
+.footerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px 0;
+  margin: 30px;
+  font-size: 2rem;
+  background: #0f172a;
+  color: white;
+}
+
+.icon {
+  cursor: pointer;
+  transition-duration: 300ms;
+}
+
+.icon:hover {
+  background: white;
+  color: #0f172a
+}
