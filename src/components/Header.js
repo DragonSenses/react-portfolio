@@ -10,12 +10,12 @@ export default function Header() {
           <i className={`fa-solid fa-dragon ${styles.icons}`}></i>
         </a>
 
-        <a href='#projects' className={styles.anchor}>
-          <i className={`fa-solid fa-diagram-project ${styles.icons}`}></i>
-        </a>
-
         <a href='#skills' className={styles.anchor}>
           <i className={`fa-solid fa-list-check ${styles.icons}`}></i>
+        </a>
+
+        <a href='#projects' className={styles.anchor}>
+          <i className={`fa-solid fa-diagram-project ${styles.icons}`}></i>
         </a>
 
         <a href='#experience' className={styles.anchor}>
